@@ -1,7 +1,8 @@
 import {useState} from 'react'
 
 function Appbar() {
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
+    const[selectedOption,setSelectedOption]=useState(0);
     const menuClicked=()=>{
         setOpen((curr)=>!curr);
     }
@@ -24,14 +25,14 @@ function Appbar() {
         </div>
         <div className={`flex justify-center md:justify-end ${open ? "block": "hidden"} md:block`}>
             <ul className='w-full md:flex md:space-x-8 space-y-8 md:space-y-0'>
-                <li className='menu border-b-4 '>
-                    <a className='font-body' href='#'>Fruits</a>
+                <li className={`menu ${selectedOption===1 ?'border-b-4':''}`}>
+                    <a className='font-body' href='#' onClick={()=>setSelectedOption(1)}>Fruits</a>
                 </li>
-                <li className='menu'>
-                    <a className='font-body' href="#">Vegetables</a>
+                <li className={`menu ${selectedOption===2 ?'border-b-4':''}`}>
+                    <a className='font-body' href="#" onClick={()=>setSelectedOption(2)}>Vegetables</a>
                 </li>
-                <li className='menu'>
-                    <a className='font-body' href='#'>More</a>
+                <li className={`menu ${selectedOption===3 ?'border-b-4':''}`}>
+                    <a className='font-body' href='#' onClick={()=>setSelectedOption(3)}>More</a>
                 </li>
                 <li className='px-4 py-2 text-green-500'>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
